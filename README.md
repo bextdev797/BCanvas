@@ -1,2 +1,3 @@
-# BCanvas
-BCanvas is a custom canvas extension that makes art using "Bees" 
+## BCanvas
+
+An App Inventor 2 extension created using Rush.
