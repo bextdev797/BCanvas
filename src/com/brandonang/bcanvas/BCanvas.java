@@ -3,9 +3,11 @@ package com.brandonang.bcanvas;
 import android.app.Activity;
 import android.content.Context;
 import com.google.appinventor.components.annotations.SimpleFunction;
+import com.google.appinventor.components.annotations.SimpleEvent;
 import com.google.appinventor.components.runtime.AndroidNonvisibleComponent;
 import com.google.appinventor.components.runtime.ComponentContainer;
 import com.google.appinventor.components.runtime.AndroidViewComponent;
+import com.google.appinventor.components.runtime.EventDispatcher;
 import android.widget.FrameLayout;
 import android.view.View;
 import android.view.Gravity;
@@ -26,12 +28,12 @@ public class BCanvas extends AndroidNonvisibleComponent {
   }
 
   @SimpleFunction(description = "Make B Canvas")
-  public void MakeBCanvas(AndroidViewComponent layout, String monospace, String serif) {
+  public void MakeBCanvas(AndroidViewComponent layout, String monospace, String serif, String clear) {
+    Typeface type = Typeface.DEFAULT;
     if(monospace == "MONOSPACE"){
     View view = layout.getView();
     TextView tv = new TextView(this.context);
     tv.setText(bText);
-    Typeface type = Typeface.DEFAULT;
     type = Typeface.MONOSPACE;
     int layoutHeight = view.getHeight();
     int layoutWidth = view.getWidth();
@@ -51,8 +53,7 @@ public class BCanvas extends AndroidNonvisibleComponent {
     View view = layout.getView();
     TextView tv = new TextView(this.context);
     tv.setText(bText);
-    Typeface type = Typeface.DEFAULT;
-    type = Typeface.MONOSPACE;
+    type = Typeface.SERIF;
     int layoutHeight = view.getHeight();
     int layoutWidth = view.getWidth();
 
@@ -64,6 +65,14 @@ public class BCanvas extends AndroidNonvisibleComponent {
     params.setMargins(randomX, randomY, 0, 0);
     tv.setLayoutParams(params);
 
+    FrameLayout frameLayout = (FrameLayout) view;
+    frameLayout.addView(tv);
+   }
+   else if(clear == "CLEAR"){
+    View view = layout.getView();
+    TextView tv = new TextView(this.context);
+    tv.setText("");
+    DeleteBCanvas();
     FrameLayout frameLayout = (FrameLayout) view;
     frameLayout.addView(tv);
    }
@@ -98,5 +107,10 @@ public class BCanvas extends AndroidNonvisibleComponent {
   public String Serif(){
     String Serif = "SERIF";
     return Serif;
+  }
+
+  @SimpleEvent(description = "Delete BCanvas")
+  public void DeleteBCanvas(){
+    EventDispatcher.dispatchEvent(this, "DeleteBCanvas");
   }
 }
