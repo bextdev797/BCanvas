@@ -71,10 +71,9 @@ public class BCanvas extends AndroidNonvisibleComponent {
    else if(clear == "CLEAR"){
     View view = layout.getView();
     TextView tv = new TextView(this.context);
-    tv.setText("");
-    DeleteBCanvas();
+    tv.setText(bText);
     FrameLayout frameLayout = (FrameLayout) view;
-    frameLayout.addView(tv);
+    frameLayout.removeView(tv);
    }
     else {
     View view = layout.getView();
@@ -114,3 +113,5 @@ public class BCanvas extends AndroidNonvisibleComponent {
     EventDispatcher.dispatchEvent(this, "DeleteBCanvas");
   }
 }
+
+//The code i publish is Beta Stage now this non-beta stage code.
