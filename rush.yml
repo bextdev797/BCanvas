@@ -3,8 +3,7 @@
 
 ---
 name: BCanvas
-description: Extension component for BCanvas. Created using Rush.
-
+description: BCanvas is a Extension that makes a canvas to have Bees. <a href="https://github.com/bextdev797/BCanvas">Visit BCanvas</a>
 version:
   number: auto
   name: '2'
